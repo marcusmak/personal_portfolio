@@ -1,0 +1,22 @@
+.Greetings{
+    flex-direction: column;
+    align-items: start;
+    justify-content: start;
+    display: flex;
+    min-height: 100%;
+    min-width: 100vw;
+}
+
+.Personal_info{
+    display: block;
+    position: relative;
+    left: 15%;
+    top: 15%;
+    font-family: "custom_font";
+    font-weight: 400;
+    font-size: 5rem; 
+}
+
+p {
+    justify-content: start;
+}
