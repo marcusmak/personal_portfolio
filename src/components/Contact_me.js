@@ -28,7 +28,7 @@ const Contact_me = ()=>{
                     </h3>   
 
                     <p className="message">
-                        Need any help for your project? Want to kick start a project but don't know how? Feel free to discuss with me any technical question or freelance opportunities.
+                        Need any help with your project? Want to kick start a project but don't know how? Feel free to discuss with me any technical questions or freelance opportunities.
                     </p>
 
                     <div>
