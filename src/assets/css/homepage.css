@@ -30,7 +30,55 @@
  
 
 @keyframes bounce {
-    0%, 20%, 50%, 80%, 100% {-webkit-transform: translateY(0);} 
-    40% {-webkit-transform: translateY(-30px);} 
-    60% {-webkit-transform: translateY(-15px);} 
+    0%, 20%, 50%, 80%, 100% {-webkit-transform: translate(-50%,0);} 
+    40% {-webkit-transform: translate(-50%,-30px);} 
+    60% {-webkit-transform: translateY(-50%,-15px);} 
 }
+
+@media all and (min-width:960px){
+    .text_content{
+        font-size: 4rem !important; 
+        left: 5vw !important;
+    }
+
+    .button-85{
+        font-size: 2rem !important;
+    }
+
+}
+@media all and (min-width:500px) and (max-width:960px){
+  .text_content{
+      font-size: 1.5rem !important; 
+      left: 5vw !important;
+  }
+
+  .button-85{
+      font-size: 1.5rem !important;
+  }
+
+}
+
+@media all and (max-width:500px) {
+
+  .text_content{
+    padding-top: 5vh !important;
+    font-size: small !important;
+  }
+
+
+}
+
+.text_content{
+    display: block;
+    position: relative;
+    padding-right: 5vw;
+    padding-top: 10vh;
+    padding-bottom: 10vh;
+    padding-left: 5vw;
+    font-family: "custom_font";
+    font-weight: 400;
+    font-size: 1rem; 
+    line-height: 1rem;
+    /* background-color: #48ff00;  */
+}
+

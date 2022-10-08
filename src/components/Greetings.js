@@ -1,6 +1,7 @@
 import React, { useState } from "react";
-import parse from 'html-react-parser';
+// import parse from 'html-react-parser';
 import '../assets/css/greetings.css';
+// import '../assets/css/homepage.css';
 
 
 class Greetings extends React.Component{
@@ -38,13 +39,15 @@ class Greetings extends React.Component{
     // }
     connectWifMe(){
         console.log("connecting");
+        console.log(window.location);
+        window.location.hash = "#contact_me";
     }
 
     render(){
 
         return (    
             <div className="Greetings">
-                <div className="Personal_info">
+                <div className="text_content">
                     <h1>
                         <p>Hi   <span id="waveHand">👋🏻</span></p>  
                         <p>I'm <span className="name">Marcus,</span> </p>
