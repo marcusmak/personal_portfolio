@@ -4,6 +4,7 @@
   overflow-x: hidden;
   font-family: "Open Sans",sans-serif;
   scrollbar-color: #2a2612 #ffe46e;
+  user-select: none;
 }
 
 @font-face {

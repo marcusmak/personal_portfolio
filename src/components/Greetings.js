@@ -6,7 +6,7 @@ import '../assets/css/greetings.css';
 class Greetings extends React.Component{
     constructor(props){
         super(props);
-        this.roles = ["A FullStack Software Engineer","A Flutter Mobile Developer","A Deep Learning Enthusiast"];
+        this.roles = ["FullStack Software Engineer","Flutter Mobile Developer","Deep Learning Enthusiast"];
         this.state ={
             roleVal : 0
         };
@@ -36,7 +36,9 @@ class Greetings extends React.Component{
     //     });
     //     return ans;
     // }
-
+    connectWifMe(){
+        console.log("connecting");
+    }
 
     render(){
 
@@ -45,15 +47,15 @@ class Greetings extends React.Component{
                 <div className="Personal_info">
                     <h1>
                         <p>Hi   <span id="waveHand">👋🏻</span></p>  
-                        <p>I'm <span className="name">Marcus</span> </p>
+                        <p>I'm <span className="name">Marcus,</span> </p>
                         <p id="roleName">{this.roles[this.state.roleVal]}</p>
                     </h1>
 
 
-                    <button class="button-85" role="button">Connect with me</button>
-{/* 
-                    <button className="btnSubmit"></button> */}
+                    <button className="button-85" role="button" onClick={this.connectWifMe}>Connect with me</button>
+
                 </div>
+
             </div>   
         );
     }

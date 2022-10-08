@@ -3,10 +3,12 @@ import './App.css';
 
 
 import {Homepage} from './views/Pages'
+import {  useRef } from 'react';
 
 function App() {
+  const App = useRef(null);
   return (
-    <div className="App">
+    <div className="App" ref={App}>
       <header className="App-header">
         {/* <img src={logo} className="App-logo" alt="logo" />
         <p>
@@ -20,7 +22,7 @@ function App() {
         >
           Learn React
         </a> */}
-        <Homepage/>
+        <Homepage test={App}/>
       </header>
 
     </div>

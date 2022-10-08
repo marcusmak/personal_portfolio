@@ -7,16 +7,49 @@
     min-width: 100vw;
 }
 
+@media all and (min-width:960px){
+    .Personal_info{
+        font-size: 2rem !important; 
+        left: 10vw !important;
+    }
+
+    .button-85{
+        font-size: 2rem !important;
+    }
+
+}
+
+@media all and (max-width:960px) {
+
+
+    #waveHand{
+        animation-iteration-count: infinite !important;
+    }
+
+
+    
+}
+
 .Personal_info{
     display: block;
     position: relative;
-    left: 15%;
-    top: 15vh;
+    left: 5%;
+    top: 20vh;
     font-family: "custom_font";
     font-weight: 400;
-    font-size: 3rem; 
+    font-size: 1rem; 
     line-height: 1rem;
 }
+
+
+#waveHand{
+    animation-name: waving; /* Refers to the name of your @keyframes element below */
+    animation-duration: 2.1s; /* Change to speed up or slow down */
+    animation-iteration-count: calc(2);
+    transform-origin: 70% 70%;
+    display: inline-block; 
+}
+
 
 p {
     justify-content: start;
@@ -34,13 +67,7 @@ p {
 
 
 @media (prefers-reduced-motion: no-preference) {
-    #waveHand{
-        animation-name: waving; /* Refers to the name of your @keyframes element below */
-        animation-duration: 2.1s; /* Change to speed up or slow down */
-        animation-iteration-count: calc(2);
-        transform-origin: 70% 70%;
-        display: inline-block; 
-    }
+
 
     #waveHand:hover{
         animation-name: waving; /* Refers to the name of your @keyframes element below */
@@ -91,7 +118,7 @@ p {
 }
 
 
-.button-85 {
+.button-85{
   padding: 1em 2em;
   border: none;
   outline: none;
@@ -104,7 +131,7 @@ p {
   user-select: none;
   -webkit-user-select: none;
   touch-action: manipulation;
-  font-size: 30px;
+  font-size: 1rem;
   font-family: "custom_font";
 }
 

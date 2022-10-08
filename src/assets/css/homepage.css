@@ -1,0 +1,36 @@
+.scroll-indicator{
+    position: absolute;
+    display: block;
+    left:50%;
+    bottom:0;
+    transform: translate(-50%,0);
+    color: #aa98497b;
+ }
+
+
+.scroll-indicator p {
+    padding: 0 0;
+    margin: 0 0;
+}
+
+.scroll-indicator img{
+    width: 2vw;
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%) scaleX(2);
+    opacity: 0.4;
+}
+
+.animatedDown{
+    animation-duration: 1s; 
+    animation-fill-mode: both;
+    animation-iteration-count: infinite;
+    animation-name: bounce; 
+}
+ 
+
+@keyframes bounce {
+    0%, 20%, 50%, 80%, 100% {-webkit-transform: translateY(0);} 
+    40% {-webkit-transform: translateY(-30px);} 
+    60% {-webkit-transform: translateY(-15px);} 
+}
