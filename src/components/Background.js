@@ -1,36 +1,107 @@
 import { StrictMode, useEffect } from 'react';
 import * as THREE from 'three';
 
-
+const canvasWidth = window.innerWidth;
+const canvasHeight = window.innerHeight;
 const renderer = new THREE.WebGLRenderer();
 renderer.setSize( window.innerWidth, window.innerHeight );
 const scene = new THREE.Scene();
-scene.background = new THREE.Color('#ffe46e');
+scene.background = new THREE.Color('#000000');
 const camera = new THREE.PerspectiveCamera( 75, window.innerWidth / window.innerHeight, 0.1, 1000 );
-camera.position.z = 5;
-const helper = new THREE.CameraHelper( camera );
-scene.add( helper );
+camera.position.z = 50;
+// camera.rotation.set(90  ,0,0);
+// const helper = new THREE.CameraHelper( camera );
+// scene.add( helper );
 
-const geometry = new THREE.BoxGeometry( 1, 1, 1 );
+
+
+const geometry = new THREE.ConeGeometry( 3, 5, 3 );
+geometry.scale(0.5,1,0.5);
+
+
+
 const edgesGeometry = new THREE.EdgesGeometry( geometry );
-var mat = new THREE.LineBasicMaterial( { color: 0x000000, linewidth: 5 } );
+var mat = new THREE.LineBasicMaterial( { color: 0xffffff, linewidth: 5 } );
 var wireframe = new THREE.LineSegments( edgesGeometry, mat );
 
 // let circleLine = new THREE.MeshLine();
 // circleLine.setGeometry(geometry);
 
 
-const material = new THREE.MeshBasicMaterial( { color: 0x00ff00 } );
+const material = new THREE.MeshBasicMaterial( { color: "#ff00ff", wireframe :  false } );
 const cube = new THREE.Mesh( geometry, material );
+cube.rotation.set(Math.PI/2,0,0);
+const coneAxesHelper = new THREE.AxesHelper(1);
+cube.add(coneAxesHelper);
+// coneAxesHelper.setColors(n)
+cube.position.set(78.5,0,0);
+const axesHelper = new THREE.AxesHelper(20);
+scene.add(axesHelper);
+// cube.add(axesHelper);
+// scene.add( axesHelper );
+// const box = new THREE.BoxHelper( cube, 0xffff00 );
+// scene.add(box);
+
+
+
 cube.add(wireframe);
 scene.add( cube );
+
+// cube.rotation.x = Math.PI / 2;
+// cube.position.setFromEuler(new THREE.Vector3(1,0,0));
+// cube.position.x = 1;
+// cube.position.y =1;
+
+let mouseX = null, mouseY = null;
+let mouseUpdated = false;
+document.addEventListener('mousemove', onMouseUpdate);
+function onMouseUpdate(e){
+  mouseX = e.pageX;
+  mouseY = e.pageY;
+  mouseUpdated = true;
+}
+
+function mouse2Worldcoor(x,y){
+  return{
+    x:x-canvasWidth/2,
+    y:-y+canvasHeight/2
+  }
+}
+
+function pointWorldcoor(coor,depth=1){
+  return{
+    x:Math.atan(coor.y/depth),
+    y:Math.atan(coor.x/depth)
+  }
+}
+
+function radian2deg(r){
+  return r/Math.PI*180;
+}
+
+console.log(cube.position);
+console.log(camera.rotation);
 
 
 function animate() {
 	requestAnimationFrame( animate );
 	renderer.render( scene, camera );
-  cube.rotation.x += 0.01;
-  cube.rotation.y += 0.01;
+  if(mouseUpdated){
+    
+    let rotation2D = pointWorldcoor(mouse2Worldcoor(mouseX,mouseY),camera.position.z-geometry.parameters.height/2);
+
+    cube.rotation.x = Math.PI/2 -rotation2D.x;
+    cube.rotation.z = -rotation2D.y;
+    // box.update();
+    // cube.position.x = 1 - cube.position.x; 
+    console.log(mouse2Worldcoor(mouseX,mouseY));
+    console.log(radian2deg(cube.rotation.x),radian2deg(cube.rotation.y),radian2deg(cube.rotation.z));
+    mouseUpdated = false;
+  }
+  // window
+  // cube.rotation
+  // cube.rotation.x += 0.01;
+  // cube.rotation.y += 0.01;
   // camera.rotateX(-0.0);
 }
 
