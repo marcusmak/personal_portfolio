@@ -1,0 +1,7 @@
+div > .about_me{
+    line-height: 5rem !important;
+    width: 75%;
+    text-align: justify;
+    /* background-color: red; */
+
+}

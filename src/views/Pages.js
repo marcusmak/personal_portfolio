@@ -1,6 +1,10 @@
 import Greetings from "../components/Greetings";
 import Contact_me from "../components/Contact_me";
+import About_me from "../components/About_me";
+import Projects from "../components/Projects";
+import Skills from "../components/Skills";
 import doubleDownArrow from "../assets/img/double-down-arrow.png";
+
 import "../assets/css/homepage.css";
 import { useEffect, useState, useRef } from "react";
 
@@ -47,9 +51,9 @@ export const Homepage = (props) => {
         <>
         <div>
             <Greetings/>
-            {/* <About_me/> */}
-            {/* <Skills> */}
-            {/* <Projects/> */}
+            <About_me/>
+            <Skills/>
+            <Projects/>
             <Contact_me/>
         </div>
         {show?

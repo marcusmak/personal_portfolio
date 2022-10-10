@@ -1,6 +1,6 @@
 .App {
   /* text-align: center; */
-  background-color: #ffe46e;
+  /* background-color: #ffe46e; */
   overflow:hidden auto;
   font-family: "Open Sans",sans-serif;
   scrollbar-color: #2a2612 #ffe46e;
@@ -21,7 +21,7 @@
 
 body{
   /* overflow-y: hidden; */
-  background-color: #ffe46e;
+  /* background-color: #ffe46e; */
   /* scrollbar-color: #2a2612 #ffe46e; */
 }
 
@@ -49,6 +49,16 @@ body{
   }
 }
 
+.background{
+  width: 100%;
+  height:100%;
+  position: fixed;
+  background-color: #ffe46e;
+  z-index: -100;
+  top: 0;
+  left: 0;
+}
+
 .App-header {
   /* background-color: #282c34; */
   min-height: 100vh;
@@ -60,6 +70,17 @@ body{
   color: #252116;
 }
 
+.App-footer{
+  min-width: 100%;
+  height: 100px;
+  /* height: 500px; */
+  background-color: #ffe46e !important;
+}
+.App-footer > div{
+  display: block;
+  padding: px;
+  text-align: center;
+}
 .App-link {
   color: #61dafb;
 }

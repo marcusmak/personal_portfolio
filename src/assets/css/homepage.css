@@ -37,23 +37,23 @@
 
 @media all and (min-width:960px){
     .text_content{
-        font-size: 4rem !important; 
+        font-size: 3rem !important; 
         left: 5vw !important;
     }
 
     .button-85{
-        font-size: 2rem !important;
+        font-size: 1.5rem !important;
     }
 
 }
 @media all and (min-width:500px) and (max-width:960px){
   .text_content{
-      font-size: 1.5rem !important; 
+      font-size: 1rem !important; 
       left: 5vw !important;
   }
 
   .button-85{
-      font-size: 1.5rem !important;
+      font-size: 1rem !important;
   }
 
 }
@@ -78,7 +78,7 @@
     font-family: "custom_font";
     font-weight: 400;
     font-size: 1rem; 
-    line-height: 1rem;
+    line-height: 3rem;
     /* background-color: #48ff00;  */
 }
 

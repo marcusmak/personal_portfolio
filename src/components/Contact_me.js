@@ -14,6 +14,21 @@ const Contact_me = ()=>{
 
     };
 
+    const Submit = ()=>{
+        console.log("Submit");
+        var yourMessage = document.getElementById("message").value;
+        var subject = document.getElementById("subject").value;
+        if(yourMessage != ""){
+            let url = "mailto:mmarkusm@protonmail.com?subject="
+                + encodeURIComponent(subject)
+                + "&body=" + encodeURIComponent(yourMessage);
+            document.location.href = url;
+            console.log(url);
+        }else{
+            document.getElementById("hint").style.display = "block";
+        }
+    }
+
     return (
         <>
         <div className="contact_me container">
@@ -32,9 +47,14 @@ const Contact_me = ()=>{
                     </p>
 
                     <div>
-                        <textarea>
+                        <p>
+                            <input placeholder="Subject" id="subject">
+                            </input>
+                        </p>
+                        <textarea placeholder="Type yopur message here..." id="message">
                             
                         </textarea>      
+                        <p className="hint" id="hint">* Enter your message</p>
 
                         <div className="flex-row">
                             <div className="flex-item">
@@ -42,7 +62,7 @@ const Contact_me = ()=>{
                                 <img src={github_logo} alt="github logo; Credit to IconsBox - Flaticon" onClick={()=>logo_onclick("github")}  className="social-media-logo"/>
                             </div>                   
                             <div className="flex-item">
-                                <button>submit</button>
+                                <button onClick={Submit}>Submit</button>
                             </div>
                         </div>
 

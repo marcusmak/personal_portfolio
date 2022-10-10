@@ -4,27 +4,22 @@ import './assets/css/App.css';
 
 import {Homepage} from './views/Pages'
 import {  useRef } from 'react';
+import Background from './components/Background';
 
 function App() {
   const App = useRef(null);
   return (
     <div className="App" ref={App}>
-      <header className="App-header">
-        {/* <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a> */}
+      <Background/>
+      {/* <header className="App-header">
         <Homepage test={App}/>
       </header>
-
+      <footer className='App-footer'>
+          <div>
+              Designed and created by 2022 Marcus © <br/>
+              This website is powered by ReactJS and hosted by github page
+          </div>
+      </footer> */}
     </div>
   );
 }
