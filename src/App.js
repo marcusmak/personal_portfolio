@@ -4,14 +4,15 @@ import './assets/css/App.css';
 
 import {Homepage} from './views/Pages'
 import {  useRef } from 'react';
-import Background from './components/Background';
+// import Background from './components/Background';
+import Background from './components/Background-vanta';
 
 function App() {
   const App = useRef(null);
   return (
     <div className="App" ref={App}>
       <Background/>
-      {/* <header className="App-header">
+      <header className="App-header">
         <Homepage test={App}/>
       </header>
       <footer className='App-footer'>
@@ -19,7 +20,7 @@ function App() {
               Designed and created by 2022 Marcus © <br/>
               This website is powered by ReactJS and hosted by github page
           </div>
-      </footer> */}
+      </footer>
     </div>
   );
 }
