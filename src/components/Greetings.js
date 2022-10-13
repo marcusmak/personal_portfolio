@@ -55,7 +55,14 @@ class Greetings extends React.Component{
                         <p id="roleName">{this.roles[this.state.roleVal]}</p>
                     </h1>
 
-                    <NavLink to="/personal_portfolio/contact">
+                    <NavLink to="/personal_portfolio/contact" onClick={()=>{
+                        // console.log("change class name");
+                        // const arr = document.getElementsByClassName("UP");
+                        // if(arr.length){
+                        //     arr[0].className = arr[0].className.replace("UP","DOWN");
+                        //     console.warn(arr[0]);
+                        // }
+                    }}>
                         {/* <button className="button-85" role="button" onClick={this.connectWifMe}>Connect with me</button> */}
                         <button className="button-85" role="button" >Connect with me</button>
                     </NavLink>

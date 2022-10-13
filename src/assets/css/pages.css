@@ -1,3 +1,69 @@
+.side-nav{
+  position: absolute;
+  left: 0;
+  height: 100%;
+  width: 100%;
+}
+
+.side-nav > div{
+  position: relative;
+  top:0%;
+  padding-left: 30px;
+  /* right:0px; */
+  float:right;
+  /* transform: translate(0, -50%); */
+}
+
+.side-nav p.active{
+  opacity: 1;
+}
+
+.side-nav p {
+  opacity: 0.5;
+  font-size: 1rem;
+}
+
+li {
+  width: 2em;
+  height: 2em;
+  text-align: center;
+  line-height: 2em;
+  border-radius: 1em;
+  background: dodgerblue;
+  margin: 0 1em;
+  display: inline-block;
+  color: white;
+  position: relative;
+}
+
+li::before {
+  content: '';
+  position: absolute;
+  top: .9em;
+  left: -4em;
+  width: 4em;
+  height: .2em;
+  background: dodgerblue;
+  z-index: -1;
+}
+
+
+li:first-child::before {
+  display: none;
+}
+
+.active {
+  background: dodgerblue;
+}
+
+.active~li {
+  background: lightblue;
+}
+
+.active~li::before {
+  background: lightblue;
+}
+
 .scroll-indicator{
     position: absolute;
     display: block;
@@ -75,24 +141,52 @@
     /* background-color: #48ff00;  */
 }
 
-.fade-enter {
-    opacity: 0;
-    transform: translate3d(0,+100%,0);
-  }
-  .fade-enter-active {
-    opacity: 1;
-    transform: translate3d(0,0,0);
-  }
-  .fade-exit {
-    opacity: 1;
-    transform: translate3d(0,0,0);
-  }
-  .fade-exit-active {
-    opacity: 0;
-    transform: translate3d(0,-100%,0);
-  }
-  .fade-enter-active,
-  .fade-exit-active {
-    transition: opacity 500ms, transform 500ms;
-  }
-  
+.DOWN.fade-enter {
+  opacity: 0;
+  transform: translate3d(0, +100%, 0);
+}
+
+.DOWN.fade-enter-active {
+  opacity: 1;
+  transform: translate3d(0, 0, 0);
+}
+
+.DOWN.fade-exit {
+  opacity: 1;
+  transform: translate3d(0, 0, 0);
+}
+
+.DOWN.fade-exit-active {
+  opacity: 0;
+  transform: translate3d(0, -100%, 0);
+}
+
+.DOWN.fade-enter-active,
+.DOWN.fade-exit-active {
+  transition: opacity 500ms, transform 500ms;
+}
+
+.UP.fade-enter {
+  opacity: 0;
+  transform: translate3d(0, -100%, 0);
+}
+
+.UP.fade-enter-active {
+  opacity: 1;
+  transform: translate3d(0, 0, 0);
+}
+
+.UP.fade-exit {
+  opacity: 1;
+  transform: translate3d(0, 0, 0);
+}
+
+.UP.fade-exit-active {
+  opacity: 0;
+  transform: translate3d(0, +100%, 0);
+}
+
+.UP.fade-enter-active,
+.UP.fade-exit-active {
+  transition: opacity 500ms, transform 500ms;
+}

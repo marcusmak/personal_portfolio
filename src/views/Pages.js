@@ -25,7 +25,7 @@ const root_url = (url) => "/personal_portfolio" + url;
 const routes = [
   { path: '', name: 'Home', element: <Greetings />, nodeRef: createRef() },
   { path: '/about', name: 'About', element: <About_me />, nodeRef: createRef() },
-  { path: '/projects', name: 'Contact', element: <Projects />, nodeRef: createRef() },
+  { path: '/projects', name: 'Projects', element: <Projects />, nodeRef: createRef() },
   // { path: '/skills', name: 'Contact', element: <Contact_me />, nodeRef: createRef()},
   { path: '/contact', name: 'Contact', element: <Contact_me />, nodeRef: createRef() },
 ]
@@ -47,19 +47,20 @@ const router = createBrowserRouter([
     element: <Navigate to='/personal_portfolio' />
   }
 ])
-
-
-
-
 function Example() {
+
+
   const location = useLocation()
   const navigate = useNavigate()
   const currentOutlet = useOutlet()
+
+
+
   const findRef = () => (routes.find((route) => root_url(route.path) === location.pathname)).nodeRef;
   const [nodeRef, setNodeRef] = useState(findRef() ?? {});
   const [currentPage, setCurrentPage] = useState(location.pathname);
   const currentPageNo = useRef(0);
-  const updating = useRef(false);
+  const updateDir = useRef("DOWN");
   const [show, setShow] = useState(true);
 
 
@@ -70,25 +71,36 @@ function Example() {
   let removeEl = () => {
     window.removeEventListener("wheel", el);
     console.log("remove wheel event listener");
+    
   }
   let addEl = () => {
     console.log("add wheel event listener");
-    // window.addEventListener("wheel", el,{once:true});
-    window.addEventListener("wheel", el);
+    window.addEventListener("wheel", el,{once:true});
+    // window.addEventListener("wheel", el);
   }
 
-  var functionLock = false;
 
+  let touchstartY = 0
+  let touchendY = 0
+
+  function checkDirection() {
+    if (touchendY < touchstartY) changePage("next")
+    if (touchendY > touchstartY) changePage("prev")    
+  }
+
+
+
+  var functionLock = false;
   let count = useRef(0);
  
   const onScrollEvent = function (e) {
     // console.log("onscroll");
     console.log("count:" + ++count.current + "\t" + functionLock);
     // console.log(e.deltaY);
-    if (!(functionLock) && e.deltaY > 10) {
+    if (!(functionLock) && e.deltaY) {
       functionLock = true;
       removeEl();
-      changePage("next");
+      changePage(e.deltaY > 0?"next":"prev");
       setTimeout(()=>{
         functionLock = false;
         addEl();
@@ -99,9 +111,14 @@ function Example() {
   const changePage = (page) => {
 
     if (page == "next" && currentPageNo.current < routes.length - 1) {
-      setCurrentPage(root_url(routes[++currentPageNo.current].path));
-      console.log(''+ currentPageNo.current + "\t" + routes[currentPageNo.current].path);
+      currentPageNo.current += 1;
+      updateDir.current = "DOWN"
+    }else if(page == "prev" && currentPageNo.current > 0){
+      currentPageNo.current -= 1;
+      updateDir.current = "UP"
     }
+    setCurrentPage(root_url(routes[currentPageNo.current].path));
+    console.log('' + currentPageNo.current + "\t" + routes[currentPageNo.current].path);
   }
 
   var once = useRef(false);
@@ -111,10 +128,17 @@ function Example() {
       if (!(once.current)) {
         console.warn('addEl: '+ count.current)
         addEl();
+
+        document.addEventListener('touchend', e => {
+          touchendY = e.changedTouches[0].screenY
+          checkDirection()
+        });
+        document.addEventListener('touchstart', e => {
+          touchstartY = e.changedTouches[0].screenY
+        });
+
         once.current = true;
-      } 
-      
-      if (currentPageNo.current > 0){
+      } else{
         navigate(currentPage);
       }
       // return removeEl;
@@ -132,7 +156,14 @@ function Example() {
     if (show && location.pathname != root_url('')){
       setShow(false);
     }
+    if (!show && location.pathname == root_url('')){
+      setShow(true);
+      // updateDir.current = "DOWN";
+    }
     
+    let route = routes.find((route)=> root_url(route.path) === location.pathname);
+    currentPageNo.current = routes.indexOf(route);
+
   }, [location]);
 
   return (
@@ -153,8 +184,22 @@ function Example() {
           </div>
         </div> */}
 
-        <NavLink to={root_url('')}> Home </NavLink>
-
+        {/* <NavLink to={root_url('')}> Home </NavLink> */}
+        <div className="side-nav">
+          <div>
+            <ul>
+            {
+              routes.map((route)=>{
+                  return <li 
+                  key={route.path}
+                  className={
+                    routes[currentPageNo.current] == route? "active":""
+                  }>{route.name}</li>
+                })
+            }
+          </ul>
+          </div>
+        </div>
         <div className="container">
           <SwitchTransition mode='out-in'>
             <CSSTransition
@@ -164,7 +209,7 @@ function Example() {
               addEndListener={(done) => {
                 nodeRef.current.addEventListener("transitionend", done, false);
               }}
-              classNames="fade"
+              classNames={updateDir.current + " fade"}
             // unmountOnExit
             >
               {(state) => (
