@@ -31,8 +31,8 @@ const Contact_me = ()=>{
 
     return (
         <>
-        <div className="contact_me container">
-            <div className="text_content">
+            <section className="contact_me container">
+            <div className="text_content contact_me">
                 <div className="contact_me" id="contact_me">
                     <h3>
                         <p>
@@ -70,7 +70,7 @@ const Contact_me = ()=>{
                     </div>   
                 </div>
             </div>
-        </div>
+            </section>
         </>
     );
 }

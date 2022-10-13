@@ -8,30 +8,30 @@ import doubleDownArrow from "../assets/img/double-down-arrow.png";
 import ReactDOM from "react-dom";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
-import "../assets/css/homepage.css";
+import "../assets/css/pages.css";
 import { useEffect, useState, useRef } from "react";
 
 
-function Test() {
-    return (
-      <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<Greetings />}>
-            {/* <Route index element={<Home />} />
-            <Route path="blogs" element={<Blogs />} />
-            <Route path="contact" element={<Contact />} />
-            <Route path="*" element={<NoPage />} /> */}
-          </Route>
-        </Routes>
-      </BrowserRouter>
-    );
-  }
-// const root = ReactDOM.createRoot(document.getElementById('root'));
-// root.render(<routing />);
+// function Test() {
+//     return (
+//       <BrowserRouter>
+//         <Routes>
+//           <Route path="/" element={<Greetings />}>
+//             {/* <Route index element={<Home />} />
+//             <Route path="blogs" element={<Blogs />} />
+//             <Route path="contact" element={<Contact />} />
+//             <Route path="*" element={<NoPage />} /> */}
+//           </Route>
+//         </Routes>
+//       </BrowserRouter>
+//     );
+//   }
+// // const root = ReactDOM.createRoot(document.getElementById('root'));
+// // root.render(<routing />);
 
 
 
-export const Homepage = (props) => {
+export const Pages = (props) => {
     // const [y,setY] = useState(0);
     const scrolldown = useRef();
     const [show,setShow] = useState(true);
@@ -59,8 +59,8 @@ export const Homepage = (props) => {
     }
 
     useEffect(() => {
-        ReactDOM.render(<Test/>,document.getElementById("homepage"));
-        props.test.current.addEventListener("scroll", (e) => handleNavigation(e));
+        // ReactDOM.render(<Test/>,document.getElementById("homepage"));
+        // props.test.current.addEventListener("scroll", (e) => handleNavigation(e));
         window.addEventListener("scroll",(e)=>handleNavigation(e)) 
         return () => { // return a cleanup function to unregister our function since its gonna run multiple times
             props.test.current.removeEventListener("scroll", (e) => handleNavigation(e));
@@ -71,7 +71,13 @@ export const Homepage = (props) => {
 
     return (       
         <>
-        <div id="homepage"/>
+        <div id="homepage">
+                <Greetings/>
+            <About_me/>
+            <Projects/>
+            <Skills/>
+            <Contact_me/> 
+        </div>
         {show?
             <div className="scroll-indicator animatedDown"ref={scrolldown}>
                 <p>scroll down</p>
@@ -83,11 +89,8 @@ export const Homepage = (props) => {
     );
 }
 
+export default Pages;
 
 
 
-{/* <Greetings/>
-<About_me/>
-<Projects/>
-<Skills/>
-<Contact_me/> */}
+

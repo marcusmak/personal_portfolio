@@ -1,15 +1,3 @@
-.Greetings{
-    /* flex-direction: column;
-    align-items: start;
-    justify-content: start;
-    display: flex;*/
-    /* max-height: 100%; */
-    min-width: 100vw; 
-    height: 100vh;
-    /* background-color: blue; */
-}
-
-
 @media (pointer:coarse) {
 #waveHand{
   animation-iteration-count: infinite !important;
@@ -30,6 +18,12 @@
 
 p {
     justify-content: start;
+    margin: 0;
+    padding:20px;
+}
+
+h1{
+  margin:0;
 }
 #roleName{
     animation: mymove 5s infinite;
@@ -175,4 +169,8 @@ p {
 .button-85{
     font-size: 1rem !important;
 }
+}
+
+.Greetings{
+  background-color: purple;
 }

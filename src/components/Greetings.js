@@ -47,30 +47,29 @@ class Greetings extends React.Component{
     render(){
 
         return (    
-            <div className="Greetings">
-                <div className="text_content">
+            <section className="Greetings text_content">
+                <div>
                     <h1>
                         <p>Hi   <span id="waveHand">👋🏻</span></p>  
                         <p>I'm <span className="name">Marcus,</span> </p>
                         <p id="roleName">{this.roles[this.state.roleVal]}</p>
                     </h1>
 
-                    <NavLink to="/personal_portfolio/contact" onClick={()=>{
+                    {/* <NavLink to="/personal_portfolio/contact" onClick={()=>{
                         // console.log("change class name");
                         // const arr = document.getElementsByClassName("UP");
                         // if(arr.length){
                         //     arr[0].className = arr[0].className.replace("UP","DOWN");
                         //     console.warn(arr[0]);
                         // }
-                    }}>
+                    }}> */}
                         {/* <button className="button-85" role="button" onClick={this.connectWifMe}>Connect with me</button> */}
                         <button className="button-85" role="button" >Connect with me</button>
-                    </NavLink>
-                    
-
+                    {/* </NavLink> */}
                 </div>
 
-            </div>   
+
+            </section>   
         );
     }
 }

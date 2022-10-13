@@ -1,4 +1,5 @@
 import doubleDownArrow from "../assets/img/double-down-arrow.png";
+import VerticalNav from "../utils/Vertical-navigation-bar"
 
 import { createRef, useRef, useEffect, useState } from 'react'
 import { createRoot } from 'react-dom/client'
@@ -23,28 +24,28 @@ import '../assets/css/pages.css'
 import Projects from "../components/Projects";
 const root_url = (url) => "/personal_portfolio" + url;
 const routes = [
-  { path: '', name: 'Home', element: <Greetings />, nodeRef: createRef() },
+  { path: '/', name: 'Home', element: <Greetings />, nodeRef: createRef() },
   { path: '/about', name: 'About', element: <About_me />, nodeRef: createRef() },
   { path: '/projects', name: 'Projects', element: <Projects />, nodeRef: createRef() },
   // { path: '/skills', name: 'Contact', element: <Contact_me />, nodeRef: createRef()},
   { path: '/contact', name: 'Contact', element: <Contact_me />, nodeRef: createRef() },
 ]
-if (window.location.pathname == root_url('/')) {
-  window.location.href = root_url('');
+if (window.location.pathname == root_url('')) {
+  window.location.href = root_url('/');
 }
 const router = createBrowserRouter([
   {
     path: root_url(''),
     element: <Example />,
     children: routes.map((route) => ({
-      index: route.path === '',
-      path: route.path === '' ? undefined : root_url(route.path),
+      index: route.path === '/',
+      path: route.path === '/' ? undefined : root_url(route.path),
       element: route.element,
     })),
   },
   {
     path: "*",
-    element: <Navigate to='/personal_portfolio' />
+    element: <Navigate to='/personal_portfolio/' />
   }
 ])
 function Example() {
@@ -104,7 +105,7 @@ function Example() {
       setTimeout(()=>{
         functionLock = false;
         addEl();
-      },1000);
+      },1500);
     }
   }
 
@@ -187,17 +188,7 @@ function Example() {
         {/* <NavLink to={root_url('')}> Home </NavLink> */}
         <div className="side-nav">
           <div>
-            <ul>
-            {
-              routes.map((route)=>{
-                  return <li 
-                  key={route.path}
-                  className={
-                    routes[currentPageNo.current] == route? "active":""
-                  }>{route.name}</li>
-                })
-            }
-          </ul>
+            <VerticalNav routes={routes} currentPageNo={currentPageNo}></VerticalNav>
           </div>
         </div>
         <div className="container">

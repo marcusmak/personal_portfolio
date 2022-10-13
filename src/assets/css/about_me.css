@@ -1,7 +1,11 @@
-div > .about_me{
+.about_me > div{
     line-height: 5rem !important;
     width: 75%;
     text-align: justify;
-    /* background-color: red; */
+    background-color: red;
 
+}
+
+.about_me{
+    background-color: white;
 }
