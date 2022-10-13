@@ -40,8 +40,8 @@ input {
     /* background-color: blue; */
 }
 
-.container button{
-    background-color: #ffe46e;
+.contact_me.container button{
+    background-color: transparent;
     border: 0.5rem solid #2a2612;
     color: #2a2612;
     /* padding: 32px 32px; */

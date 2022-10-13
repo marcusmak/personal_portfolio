@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { NavLink } from "react-router-dom";
 // import parse from 'html-react-parser';
 import '../assets/css/greetings.css';
 // import '../assets/css/homepage.css';
@@ -40,7 +41,7 @@ class Greetings extends React.Component{
     connectWifMe(){
         console.log("connecting");
         console.log(window.location);
-        window.location.hash = "#contact_me";
+        window.location += "/contact_me";
     }
 
     render(){
@@ -54,8 +55,11 @@ class Greetings extends React.Component{
                         <p id="roleName">{this.roles[this.state.roleVal]}</p>
                     </h1>
 
-
-                    <button className="button-85" role="button" onClick={this.connectWifMe}>Connect with me</button>
+                    <NavLink to="/personal_portfolio/contact">
+                        {/* <button className="button-85" role="button" onClick={this.connectWifMe}>Connect with me</button> */}
+                        <button className="button-85" role="button" >Connect with me</button>
+                    </NavLink>
+                    
 
                 </div>
 

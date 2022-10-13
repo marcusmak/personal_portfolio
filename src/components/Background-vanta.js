@@ -30,9 +30,7 @@ class Background extends React.Component {
     }
   }
   render() {
-    return <div className="background" ref={this.vantaRef}>
-        {/* test */}
-    </div>
+    return <div className="background" ref={this.vantaRef}/>
   }
 }
 

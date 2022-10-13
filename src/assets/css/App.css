@@ -20,7 +20,7 @@
 } */
 
 body{
-  /* overflow-y: hidden; */
+  overflow-y: hidden;
   /* background-color: #ffe46e; */
   /* scrollbar-color: #2a2612 #ffe46e; */
 }
@@ -75,14 +75,17 @@ body{
 
 .App-footer{
   min-width: 100%;
-  height: 100px;
+  height: 75px;
   /* height: 500px; */
   background-color: #ffe46e !important;
+  opacity: 0.7;
+  filter: brightness(0.75);
 }
 .App-footer > div{
   display: block;
   padding: px;
   text-align: center;
+  
 }
 .App-link {
   color: #61dafb;

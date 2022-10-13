@@ -2,7 +2,8 @@ import logo from './logo.svg';
 import './assets/css/App.css';
 
 
-import {Homepage} from './views/Pages'
+// import {Homepage} from './views/Pages'
+import Test from './views/Pages';
 import {  useRef } from 'react';
 // import Background from './components/Background';
 import Background from './components/Background-vanta';
@@ -12,8 +13,9 @@ function App() {
   return (
     <div className="App" ref={App}>
       <Background/>
-      <header className="App-header">
-        <Homepage test={App}/>
+      <header className="App-header" >
+        <Test />
+        {/* <Homepage test={App}/> */}
       </header>
       <footer className='App-footer'>
           <div>
